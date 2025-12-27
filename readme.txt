@@ -112,3 +112,88 @@ Generate:
 The LLM (via Ollama) produces an answer based only on that context.
 It includes citations from the chunks.
 
+
+
+
+
+
+
+# RAG-Search 🔍🧠
+
+An advanced Retrieval-Augmented Generation (RAG) system designed to enhance large language model responses by grounding them in relevant, external knowledge sources.
+
+## 🎯 Problem Statement
+Large Language Models can generate fluent answers but may:
+- Hallucinate facts
+- Lack access to up-to-date or domain-specific knowledge
+- Fail on knowledge-intensive queries
+
+This project addresses these limitations by integrating a retrieval layer that injects relevant context into the generation pipeline.
+
+## 🧠 System Architecture
+The system follows a modular RAG pipeline:
+
+Query  
+→ Embedding Generation  
+→ Vector Similarity Search  
+→ Context Selection  
+→ LLM Prompt Augmentation  
+→ Answer Generation  
+
+This design separates retrieval from generation, enabling scalability and component-level optimization.
+
+## 🔍 Retrieval Strategy
+- Dense vector embeddings for semantic search
+- Similarity-based ranking (top-k retrieval)
+- Context window optimization to reduce prompt noise
+
+The retrieval layer is intentionally decoupled to allow:
+- Swapping vector databases
+- Experimenting with embedding models
+- Domain-specific tuning
+
+## 🧪 Generation Strategy
+- Prompt construction includes:
+  - Retrieved context
+  - Query intent
+  - Guardrails against hallucination
+- Generation focuses on **grounded responses**, not creative completion
+
+## 🛠 Tech Stack
+- Python
+- LLM APIs
+- Embedding models
+- Vector search (FAISS / equivalent)
+- Modular prompt engineering
+
+## ⚙️ Design Decisions
+- **Why RAG instead of fine-tuning?**  
+  Faster iteration, lower cost, easier knowledge updates.
+- **Why modular components?**  
+  Enables independent optimization and testing.
+- **Why similarity search?**  
+  Robust semantic retrieval over keyword matching.
+
+## 📈 Use Cases
+- Enterprise knowledge assistants
+- Technical documentation Q&A
+- Research paper retrieval
+- Internal search systems
+
+## ⚠️ Limitations
+- Retrieval quality depends on embedding choice
+- Context length constrained by LLM limits
+- Performance varies by domain density
+
+## 🚀 Future Work
+- Hybrid retrieval (keyword + dense)
+- Reranking with cross-encoders
+- Query rewriting and intent detection
+- Evaluation metrics for retrieval quality
+
+## 👩‍💻 Author
+Fatemeh Mosleh  
+MSc Artificial Intelligence (Distinction)
+
+
+
